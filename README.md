@@ -1,12 +1,23 @@
 # SlimStart-Lite
-Mini implementation of "Efficient Serverless Cold Start: Reducing Library Loading Overhead by Profile-guided Optimization".
 
-    python slimstart_lite.py profile            # sample a simulated workload (90/8/2 mix) -> profile.json
-    python slimstart_lite.py report             # init time vs utilization per library
-    python slimstart_lite.py optimize           # AST rewrite: flagged global imports -> deferred imports (app_opt/)
+A mini implementation inspired by *“Efficient Serverless Cold Start: Reducing Library Loading Overhead by Profile-guided Optimization.”* It uses workload profiling and AST-based lazy loading to reduce unnecessary library initialization in AWS Lambda.
 
-AWS (free tier): see build.sh, deploy.sh, benchmark.py
-    ./build.sh app && ./build.sh app_opt
-    ./deploy.sh slim-baseline dist/app.zip  <bucket>
-    ./deploy.sh slim-optimized dist/app_opt.zip <bucket>
-    python benchmark.py slim-baseline 30 ; python benchmark.py slim-optimized 30
+**Workflow:**
+```bash
+python slimstart_lite.py profile
+python slimstart_lite.py report
+python slimstart_lite.py optimize
+
+./build.sh app
+./build.sh app_opt
+
+./deploy.sh slim-baseline dist/app.zip YOUR_S3_BUCKET
+./deploy.sh slim-optimized dist/app_opt.zip YOUR_S3_BUCKET
+
+python benchmark.py slim-baseline 30
+python benchmark.py slim-optimized 30
+```
+
+**Results:** In 30-run benchmarks, mean initialization time decreased from **3819 ms to 2258 ms (~40.9%)**, with reported memory usage decreasing from **184 MB to 122 MB**.
+
+**Technologies:** Python, AST, AWS Lambda, Amazon S3, CloudWatch, Boto3.
