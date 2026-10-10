@@ -1,0 +1,23 @@
+# Python virtual environments
+venv/
+venv_linux/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Generated build files and deployment ZIPs
+build/
+dist/*.zip
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+.aws/
+
+# Editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db

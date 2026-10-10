@@ -1,0 +1,28 @@
+{
+  "import_ms": {
+    "hashlib": 77.19037199967715,
+    "numpy": 1945.912777000558,
+    "pandas": 5498.432489999686,
+    "requests": 1119.4133019998844,
+    "PIL": 256.9991590007703,
+    "matplotlib": 2129.848411999774
+  },
+  "total_samples": 1046,
+  "lib_samples": {
+    "numpy": 69,
+    "PIL": 103,
+    "pandas": 54,
+    "matplotlib": 138,
+    "requests": 23,
+    "cycler": 1
+  },
+  "n_invocations": 3000,
+  "mix": {
+    "hash": 0.88,
+    "stats": 0.06,
+    "report": 0.02,
+    "image": 0.02,
+    "http": 0.01,
+    "plot": 0.01
+  }
+}
